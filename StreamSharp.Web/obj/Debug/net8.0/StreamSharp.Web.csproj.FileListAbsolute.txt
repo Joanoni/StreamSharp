@@ -1,10 +1,10 @@
+C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.exe
+C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.dll
 C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\appsettings.Development.json
 C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\appsettings.json
 C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.staticwebassets.runtime.json
-C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.exe
 C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.deps.json
 C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.runtimeconfig.json
-C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.dll
 C:\Projects\StreamSharp\StreamSharp.Web\bin\Debug\net8.0\StreamSharp.Web.pdb
 C:\Projects\StreamSharp\StreamSharp.Web\obj\Debug\net8.0\StreamSharp.Web.GeneratedMSBuildEditorConfig.editorconfig
 C:\Projects\StreamSharp\StreamSharp.Web\obj\Debug\net8.0\StreamSharp.Web.AssemblyInfoInputs.cache

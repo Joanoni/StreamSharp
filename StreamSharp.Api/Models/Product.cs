@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+
 
 namespace StreamSharp.Api.Models
 {
@@ -17,6 +19,12 @@ namespace StreamSharp.Api.Models
         public decimal Price { get; set; }
 
         public bool Caio { get; set; }
+
+        public override string ToString()
+        {
+            return JsonSerializer.Serialize(this);
+
+        }
 
     }
 }

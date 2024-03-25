@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StreamSharp.Api.Context;
@@ -17,6 +20,8 @@ public class ProductController(AppDbContext context = null!) : ControllerBase
 {
     private readonly AppDbContext _context = context;
 
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -30,6 +35,7 @@ public class ProductController(AppDbContext context = null!) : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
+        Console.WriteLine($"id: {id}");
         var product = await _context.Products.FindAsync(id);
 
         if (product == null)
@@ -46,6 +52,8 @@ public class ProductController(AppDbContext context = null!) : ControllerBase
         var product = createProductDto.ToStockFromCreateDto();
         await _context.Products.AddAsync(product);
         await _context.SaveChangesAsync();
+        Console.WriteLine("caio");
+        ProductController.WriteToAllClients(product.ToProductDto());
         return CreatedAtAction(nameof(GetById), new { id = product.Id }, product.ToProductDto());
     }
 
@@ -85,5 +93,38 @@ public class ProductController(AppDbContext context = null!) : ControllerBase
         await _context.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    public static List<HttpResponse> clients = [];
+
+    public static async void WriteToAllClients(ProductDto productDto)
+    {
+        foreach (var client in clients)
+        {
+            await client.WriteAsync($"data: Controller at {JsonSerializer.Serialize(productDto)}\r\r");
+            await client.Body.FlushAsync();
+        }
+    }
+
+    [EnableCors("_myAllowSpecificOrigins")]
+    [HttpGet("streaming/{topic}")]
+    public async Task Streaming([FromRoute] string topic)
+    {
+        var response = Response;
+        response.Headers.ContentType = "text/event-stream";
+        response.Headers.CacheControl = "no-store";
+        response.StatusCode = 200;
+
+        Console.WriteLine(topic);
+        ProductController.clients.Add(response);
+        for (var i = 0; true; ++i)
+        {
+            // await response
+            //     .WriteAsync($"data: Controller {i} at {DateTime.Now}\r\r");
+
+            await response.Body.FlushAsync();
+            await Task.Delay(1000);
+        }
+
     }
 }

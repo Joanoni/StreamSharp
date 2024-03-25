@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eNzPvfpEUmOTso0pWVm5d4YcHMjJigIOBMndJVTc24k=",
+  "Hash": "INtolbbKUUXkM43AR97f+tH2pz6Pot8n8CSdPJevQK0=",
   "Source": "StreamSharp.Web",
   "BasePath": "_content/StreamSharp.Web",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Projects\\StreamSharp\\StreamSharp.Web\\wwwroot\\js\\event.js",
+      "SourceId": "StreamSharp.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\StreamSharp\\StreamSharp.Web\\wwwroot\\",
+      "BasePath": "_content/StreamSharp.Web",
+      "RelativePath": "js/event.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\event.js"
     }
   ]
 }
